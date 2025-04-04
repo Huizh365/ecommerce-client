@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 
-export const BASE_URL = "http://ecommerce-api-mocha.vercel.app/"
+export const BASE_URL = "https://ecommerce-api-mocha.vercel.app/"
 
 export const handleRequest = async<T>(request: Promise<AxiosResponse<T>>): Promise<T> => {
     try{
