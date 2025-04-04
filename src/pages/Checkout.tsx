@@ -60,7 +60,7 @@ export const Checkout = () => {
         if(result && 'message' in result) {
           const newCustomer = await createCustomerHandler(customer)
           setCustomerID(newCustomer.id)
-          return newCustomer.id
+          return customerID
         } else if ("id" in result) {
           setCustomerID(result.id)
           return result.id
@@ -91,7 +91,7 @@ export const Checkout = () => {
             quantity: item.quantity
           }))
         }
-        const response = await axios.post("http://localhost:3000/stripe/create-checkout-session-embedded", payload)
+        const response = await axios.post("http://ecommerce-api-mocha.vercel.app/stripe/create-checkout-session-embedded", payload)
         console.log(response)
         return response.data.clientSecret
       } catch (error) {
