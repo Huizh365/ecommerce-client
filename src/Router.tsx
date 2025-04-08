@@ -16,6 +16,7 @@ import { Layout } from "./pages/Layout";
 import { Cart } from "./pages/Cart";
 import { Checkout } from "./pages/Checkout";
 import { OrderConfirmation } from "./pages/OrderConfirmation";
+import { SearchResultPage } from "./pages/SearchResultPage";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path:"/order-confirmation",
                 element: < OrderConfirmation />
+            },
+            {
+                path:"/search-result",
+                element: < SearchResultPage />
             },
             
         ]
