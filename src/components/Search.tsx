@@ -1,15 +1,17 @@
 import { ChangeEvent, FormEvent } from "react"
 import { useSearch } from "../hooks/useSearch"
 import "../styles/nav.css"
+import { useNavigate } from "react-router"
 
 
 export const Search = () => {
 
-const { items, searchText, setSearchText, searchhandler, navigate, isLoading } = useSearch()
+const { items, searchText, setSearchText, searchHandler, isLoading } = useSearch()
+const navigate = useNavigate()
 
 const handleSearch = async (e: FormEvent) => {
     e.preventDefault()
-    await searchhandler(searchText)
+    await searchHandler(searchText)
     console.log("Current items:", items)
     navigate("/search-result")
 }
