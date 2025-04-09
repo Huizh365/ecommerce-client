@@ -28,8 +28,8 @@ export const SearchProvider = ({children}: {children:ReactNode}) => {
             const response = await axios.get("https://www.googleapis.com/customsearch/v1", {
                 params: {
                     q: text,
-                    key: "AIzaSyAqKl1gxuThUX0wnPj_Rk_HYoClyXHhwqI",
-                    cx: "b73355d65080447a5"
+                    key: import.meta.env.VITE_GOOGLE_KEY,
+                    cx: import.meta.env.VITE_GOOGLE_CX
                 }
             }) 
             console.log(response.data)
