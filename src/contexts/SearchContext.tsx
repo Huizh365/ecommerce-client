@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState } from "react"
 import { SearchItem } from "../types/SearchItem"
 import axios from "axios"
-import { productIdMap } from "../data/productIdMap"
+// import { productIdMap } from "../data/productIdMap"
 
 type SearchContextType = {
     searchText: string
