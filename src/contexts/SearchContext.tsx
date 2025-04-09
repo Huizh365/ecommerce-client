@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from "react"
 import { SearchItem } from "../types/SearchItem"
 import axios from "axios"
+import { productIdMap } from "../data/productIdMap"
 
 type SearchContextType = {
     searchText: string
@@ -19,7 +20,6 @@ export const SearchProvider = ({children}: {children:ReactNode}) => {
     const [error, setError] = useState<string>("")
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    
     const searchHandler = async (text: string) => {
         try {
             setIsLoading(true)
@@ -29,7 +29,7 @@ export const SearchProvider = ({children}: {children:ReactNode}) => {
                 params: {
                     q: text,
                     key: import.meta.env.VITE_GOOGLE_KEY,
-                    cx: import.meta.env.VITE_GOOGLE_CX
+                    cx: import.meta.env.VITE_GOOGLE_CX,
                 }
             }) 
             console.log(response.data)
@@ -37,7 +37,9 @@ export const SearchProvider = ({children}: {children:ReactNode}) => {
             if (response.data.items === undefined) {
                 throw new Error('No search results')
             }
-    
+            // const filteredItems = response.data.items.filter((item: { link: string }) => productIdMap[item.link] !== undefined)
+            // console.log("filtered items:", filteredItems)
+            // setItems(filteredItems)
             setItems(response.data.items)
     
         } catch (error) {
