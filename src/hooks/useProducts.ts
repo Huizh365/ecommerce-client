@@ -5,8 +5,8 @@ import { useNavigate, useParams } from 'react-router'
 
 export const useProducts = () => {
     const [products, setProducts] = useState<IProduct[]>([])
-    const [error, setError] = useState<string>("");
-    const [isLoading, setIsLoading] = useState<boolean>(false); 
+    const [error, setError] = useState<string>("")
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const navigate = useNavigate()
     const params = useParams()
 

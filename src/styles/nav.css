@@ -5,61 +5,84 @@
     padding: 1rem;
     background-color: #f8f9fa;
     border-bottom: 1px solid #e9ecef;
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-}
-
-.nav-logo {
-    height: 80px; 
-    width: auto;
-}
-
-.nav-links {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.navbar-link {
-    text-decoration: none;
-    color: #333; 
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.navbar-link:hover {
-    color: #007bff; 
-}
-
-.nav-right {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem; 
-}
-
-#cart-number {
-    display: flex;
-    align-items: center;
-}
-.navbar-icon {
-    height: 24px; 
-    width: auto;
-    cursor: pointer; 
-}
-
-#cart-enter {
-    position: relative;
-}
-#cart-count {
-    font-size: 20px;
-    position:absolute;
-    top: -12px;
-    right: -18px;
-    color: #B9463F;
-}
 
 
-  
+    .nav-left {
+        display: flex;
+        align-items: center;
+
+        .nav-logo {
+            height: 80px; 
+            width: auto;
+        }
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 1.5rem;
+
+        .navbar-link {
+            text-decoration: none;
+            color: #333; 
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .navbar-link:hover {
+            color: #007bff;    
+        }
+    }
+
+    #search-form {
+        display: flex;
+        justify-content:space-around;
+        gap: 10px;
+
+        .search-input {
+            width: 100%;
+            border: 1.5px solid lightgrey;
+            min-height: 30px;
+            border-radius: 5px;
+        }
+        .search-btn {
+            background-color: white;
+            border: 1px solid #5EAAA2;
+            color: #5EAAA2;
+        }
+        .search-btn:hover {
+            background-color: #5EAAA2;
+            color: white;
+        }
+    }
+    
+    .nav-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem; 
+
+        #cart-number {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-icon {
+            height: 24px; 
+            width: auto;
+            cursor: pointer; 
+        }
+        
+        #cart-enter {
+            position: relative;
+        }
+        #cart-count {
+            font-size: 20px;
+            position:absolute;
+            top: -12px;
+            right: -18px;
+            color: #B9463F;
+        }
+        
+    }  
+      
+}
+
