@@ -1,6 +1,7 @@
 import { useSearch } from "../hooks/useSearch"
 import { productIdMap } from "../data/productIdMap"
 import { Link } from "react-router"
+import "../styles/searchResult.css"
 
 
 export const SearchResultPage = () => {
@@ -25,7 +26,7 @@ export const SearchResultPage = () => {
                     </section>
                     <section className="result-text">
                         <h3>{item.title}</h3>
-                        <p>{item.snippet}</p>
+                        {/* <p>{item.snippet}</p> */}
                         {productId ? (
                             <Link to={`/products/${productId}`}>Check details</Link>
                         ) : (
