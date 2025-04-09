@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useProducts } from "../hooks/useProducts"
 import "../styles/shop.css"
 import { useCart } from "../hooks/useCart"
@@ -9,6 +9,7 @@ import { IProduct } from "../types/Product"
 export const Products = () => {
     const {products, fetchProductsHandler, isLoading, error, navigate} = useProducts()
     const {dispatch} = useCart()
+    const [category, setCategory] = useState<string>("all")
     
     useEffect (() => {
         fetchProductsHandler()
@@ -18,20 +19,30 @@ export const Products = () => {
         navigate(`/products/${id}`)
     }
     const addToCart = (product: IProduct, quantity: number) => {
-            dispatch({
-                type: ICartActionType.ADD_ITEM,
-                payload: new CartItem(product, quantity)
-            })
-        }
+        dispatch({
+            type: ICartActionType.ADD_ITEM,
+            payload: new CartItem(product, quantity)
+        })
+    }
+    
+    const filteredProducts = category === "all" 
+        ? products 
+        : products.filter(p => p.category === category)
 
     return (
-        <>
-        <div className="filter-wrapper">Filters</div>
+        <div className="product-list-wrapper">
+        <div className="filter-wrapper">
+            <button className="filter-btn" onClick={() => setCategory("all")}>All Snacks</button>
+            <button className="filter-btn" onClick={() => setCategory("Chocolate")}>Chocolate</button>
+            <button className="filter-btn" onClick={() => setCategory("Candy")}>Candy</button>
+            <button className="filter-btn" onClick={() => setCategory("Nuts")}>Nuts</button>
+            <button className="filter-btn" onClick={() => setCategory("Dried Fruit")}>Dried Fruit</button>
+        </div>
         <div className="products">
         {isLoading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         {
-            products.map((p) =>(
+            filteredProducts.map((p) =>(
                 <div 
                     className="product-item" 
                     key={p.id}
@@ -46,6 +57,6 @@ export const Products = () => {
             ))
         }
         </div>
-        </>
+        </div>
     )
 }
