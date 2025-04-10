@@ -1,8 +1,9 @@
+import { ProductList } from "../components/ProductList"
 
 export const Home = () => {
     return (
         <>
-        home
+        <ProductList limit={10} />
         </>
     )
 }
