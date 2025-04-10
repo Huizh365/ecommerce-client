@@ -1,0 +1,37 @@
+.footer-container {
+    background-color: #f8f9fa;
+}
+.footer {
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+}
+
+.footer-content {
+    width: 33%;
+}
+
+#customer-service {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+a {
+    text-align: left;
+    text-decoration: none;
+    color: #333; 
+}
+
+.footer-contact-item {
+    list-style: none;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        display: flex;
+        flex-direction: column;    
+    }
+
+}
