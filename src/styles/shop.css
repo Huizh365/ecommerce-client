@@ -257,4 +257,8 @@ a:hover {
         grid-template-columns: repeat(2, 1fr);   
     }
 
+    .product-item img {
+        height: 150px;
+    }
+
 }

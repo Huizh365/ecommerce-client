@@ -11,7 +11,7 @@ export const Footer = () => {
                     <a href="#">Customer Service</a>
                 </div>
         
-                <div className="footer-content footer-img">
+                <div className="footer-content">
                     <img id="footer-logo" src={logo} alt="snacktopia logo" />
                 </div>
         
