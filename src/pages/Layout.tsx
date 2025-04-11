@@ -2,11 +2,12 @@ import { Outlet } from "react-router"
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { CartProvider } from "../contexts/CartContext";
+import { SearchProvider } from "../contexts/SearchContext";
 
 export const Layout = () => {
     return (
-      
-      <CartProvider>
+        <SearchProvider>
+        <CartProvider>
         <header>
             < Nav />
         </header>
@@ -17,6 +18,7 @@ export const Layout = () => {
             < Footer />
         </footer>
         </CartProvider>
+        </SearchProvider>
       
     );
   };

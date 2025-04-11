@@ -5,6 +5,7 @@ import "../styles/shop.css"
 import { useCart } from "../hooks/useCart"
 import { ICartActionType } from "../reducers/CartReducer"
 import { CartItem } from "../models/CartItem"
+import { Link } from "react-router"
 
 
 export const ProductDetails = () => {
@@ -28,17 +29,25 @@ export const ProductDetails = () => {
         <>
         {isLoading && <p>Loading...</p>}
         {error && <p>{error}</p>}
+        
         <div className="product-detail">
-            <img src={product?.image} alt={product?.name}></img>
-            <div className="info-wrapper">
-                <h2>{product?.name}</h2>
-                <h4>{product?.price} kr</h4>
-                <p>{product?.description}</p>
-                {product?.stock ? <p className="in-stock">In Stock</p> : <p className="out-stock">Out of Stock</p>}
-                <button className="add-btn" 
-                    onClick={() => {product && addToCart(product, 1)}}
-                    disabled={!product || product.stock === 0}
-                >Add to Cart</button>
+            <div className="path">
+                <Link to="/products">Products</Link> / {product?.name}
+            </div>
+            <div className="img-text">
+                <img src={product?.image} alt={product?.name}></img>
+                <div className="info-wrapper">
+                    <h2>{product?.name}</h2>
+                    <h4>{product?.price} kr</h4>
+                    <p>{product?.description}</p>
+                    {product?.stock 
+                        ? <p className="in-stock">In Stock</p> 
+                        : <p className="out-stock">Out of Stock</p>}
+                    <button className="add-btn" 
+                        onClick={() => {product && addToCart(product, 1)}}
+                        disabled={!product || product.stock === 0}
+                    >Add to Cart</button>
+                </div>
             </div>
         </div>
         </>

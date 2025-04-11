@@ -1,22 +1,53 @@
+import { useEffect, useState } from "react"
 import logo from "../assets/logo.png"
 import { useCart } from "../hooks/useCart"
 import { CartItem } from "../models/CartItem"
 import "../styles/nav.css"
+import { Search } from "./Search"
 
 export const Nav = () => {
     const {cart} = useCart()
     const cartItemCount = cart.reduce((total, item:CartItem) => total + item.quantity, 0)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768)
+        }
+        handleResize()
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
 
     return (
         <nav className="navbar">
-            <div className="nav-left">
-                <img src={logo} alt="snacktpia logo" className="nav-logo" />
+            {isMobile && (
+                <button 
+                    className="hamburger-btn"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                    <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+                    <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+                    <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+                </button>
+            )}
+            <div className="nav-logo-container">
+                <img src={logo} alt="snacktopia logo" className="nav-logo" />
             </div>
 
-            <div className="nav-links">
-                <a href="/" className="navbar-link">HOME</a>
-                <a href="/products" className="navbar-link">ALL SNACKS</a>
-            </div>
+            {!isMobile && (
+                <div className="nav-links">
+                    <a href="/" className="navbar-link">HOME</a>
+                    <a href="/products" className="navbar-link">ALL SNACKS</a>
+                </div>
+            )}
+
+            {!isMobile && (
+                <div className="search-bar">
+                    <Search />
+                </div>
+            )}
 
             <div className="nav-right">
                 <a id="user-enter" href="/admin/orders">
@@ -32,7 +63,16 @@ export const Nav = () => {
                 </div>
             </div>
 
-
+            {isMobile && isMenuOpen && (
+                <div className="mobile-menu">
+                    <div className="mobile-search">
+                        <Search />
+                    </div>
+                    <a href="/" className="mobile-link" onClick={() => setIsMenuOpen(false)}>HOME</a>
+                    <a href="/products" className="mobile-link" onClick={() => setIsMenuOpen(false)}>ALL SNACKS</a>
+                    <a href="/admin/orders" className="mobile-link" onClick={() => setIsMenuOpen(false)}>ADMIN</a>
+                </div>
+            )}
         </nav>
     )
 }

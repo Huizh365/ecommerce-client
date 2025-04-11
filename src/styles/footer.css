@@ -1,0 +1,49 @@
+.footer-container {
+    background-color: #f8f9fa;
+}
+.footer {
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.footer-content {
+    width: 33%;
+}
+
+#footer-logo {
+    height: 150px;
+}
+
+#customer-service {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+a {
+    text-align: center;
+    text-decoration: none;
+    color: #333; 
+    margin: 5px;
+}
+
+.footer-contact-list{
+    padding: 0;
+}
+.footer-contact-item {
+    list-style: none;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        display: flex;
+        flex-direction: column;    
+    }
+    .footer-content {
+        width: 100%;
+    }
+
+}
